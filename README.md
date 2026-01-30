@@ -21,7 +21,7 @@ This repository contains the **landing page** for Rizzide, designed to showcase 
 
 ![Hero](assets/preview-desktop.png)
 
-> Replace these with your actual image paths
+
 
 ---
 
