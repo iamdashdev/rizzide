@@ -30,7 +30,6 @@ This repository contains the **landing page** for Rizzide, designed to showcase 
 - HTML  
 - CSS  
 - JavaScript  
-- (Optional: React / Vite if applicable)
 
 ---
 
