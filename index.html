@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hero Demo Animation</title>
+		<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+		<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+			rel="stylesheet" />
+		<link rel="stylesheet" href="style.css" />
+		<script
+			src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js"
+			type="module"></script>
+	</head>
+	<body>
+		<header class="main-header">
+			<div class="logo">RIZZIDE</div>
+			<nav class="nav-links">
+				<a href="#features">Features</a>
+				<a href="#">Products</a>
+				<a href="#about">About</a>
+				<a href="#" class="btn-primary">Get Started</a>
+			</nav>
+		</header>
+		<section class="hero">
+			<div class="hero-content">
+				<div class="hero-left">
+					<div class="hero-text">
+						<h1 class="hero-title">Find your next home, the smart way</h1>
+						<p class="hero-description">
+							Rizzide uses AI and location intelligence to help you discover
+							homes that truly fit your life — based on where you work, what you
+							value, and how you move through the city.
+						</p>
+					</div>
+					<div class="follow-up-card chat-interface">
+						<div class="chat-row">
+							<div class="ai-avatar">
+								<div class="avatar-ring"></div>
+								<div class="avatar-core"></div>
+							</div>
+							<div class="chat-content">
+								<div class="chat-bubble">
+									<p class="follow-up-text">
+										I found a few cozy, affordable places that match what you’re
+										looking for. Want me to refine the results using your
+										budget?
+									</p>
+								</div>
+								<div class="follow-up-actions">
+									<button class="action-btn btn-yes">✔️ Yes, please</button>
+									<button class="action-btn btn-no">❌ No, I'm good</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="search-container center-ui">
+						<div class="search-row">
+							<input id="searchInput" placeholder="Ask anything..." />
+							<button id="sendBtn">
+								<span class="btn-text">Send</span>
+								<div class="spinner"></div>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div id="mapContainer">
+					<div
+						class="flourish-embed flourish-map"
+						data-src="visualisation/27409115">
+						<script src="https://public.flourish.studio/resources/embed.js"></script>
+						<noscript
+							><img
+								src="https://public.flourish.studio/visualisation/27409115/thumbnail"
+								width="100%"
+								alt="map visualization"
+						/></noscript>
+					</div>
+				</div>
+				<div class="mobile-map-image">
+					<img src="./assets/map-alt.png" alt="Map View" />
+				</div>
+
+				<div class="property-cards-container">
+					<div class="property-card" id="card1">
+						<div
+							class="card-image"
+							style="
+								background-image: url(&quot;https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80&quot;);
+							"></div>
+						<div class="card-info">
+							<div class="card-price">$450,000</div>
+							<div class="card-title">Modern Villa in Riverside</div>
+							<div class="card-meta">3 Bed • 2 Bath • 1,200 sqft</div>
+						</div>
+					</div>
+					<div class="property-card" id="card2">
+						<div
+							class="card-image"
+							style="
+								background-image: url(&quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80&quot;);
+							"></div>
+						<div class="card-info">
+							<div class="card-price">$620,000</div>
+							<div class="card-title">Luxury Suite Downtown</div>
+							<div class="card-meta">2 Bed • 2 Bath • 950 sqft</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container_mouse">
+				<span class="mouse-btn">
+					<span class="mouse-scroll"></span>
+				</span>
+				<span>Scroll Down</span>
+			</div>
+		</section>
+
+		<section class="features" id="features">
+			<div class="features-container">
+				<div class="features-header">
+					<span class="features-tag">Rizzide AI</span>
+					<h2 class="features-title">Smarter ways to search for a home</h2>
+				</div>
+
+				<div class="bento-grid">
+					<!-- AI Search -->
+					<div class="bento-item tall" id="feat-ai">
+						<!-- From Uiverse.io by andrew-manzyk -->
+
+						<div class="loader">
+							<svg width="100" height="100" viewBox="0 0 100 100">
+								<defs>
+									<mask id="clipping">
+										<polygon
+											points="0,0 100,0 100,100 0,100"
+											fill="black"></polygon>
+										<polygon points="25,25 75,25 50,75" fill="white"></polygon>
+										<polygon points="50,25 75,75 25,75" fill="white"></polygon>
+										<polygon points="35,35 65,35 50,65" fill="white"></polygon>
+										<polygon points="35,35 65,35 50,65" fill="white"></polygon>
+										<polygon points="35,35 65,35 50,65" fill="white"></polygon>
+										<polygon points="35,35 65,35 50,65" fill="white"></polygon>
+									</mask>
+								</defs>
+							</svg>
+							<div class="box"></div>
+						</div>
+
+						<div class="bento-content">
+							<div class="bento-icon">🤖</div>
+							<h4 class="bento-title">Natural Language Search</h4>
+							<p class="bento-text">
+								Just describe what you want in plain language — like “Find me a
+								home near work with low traffic and good schools.”
+							</p>
+						</div>
+					</div>
+
+					<!-- GIS Analysis -->
+					<div class="bento-item" id="feat-gis">
+						<div>
+							<!-- From Uiverse.io by Nawsome -->
+							<svg
+								class="pl"
+								viewBox="0 0 160 160"
+								width="160px"
+								height="160px"
+								xmlns="http://www.w3.org/2000/svg">
+								<defs>
+									<linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+										<stop offset="0%" stop-color="#000"></stop>
+										<stop offset="100%" stop-color="#fff"></stop>
+									</linearGradient>
+									<mask id="mask1">
+										<rect
+											x="0"
+											y="0"
+											width="160"
+											height="160"
+											fill="url(#grad)"></rect>
+									</mask>
+									<mask id="mask2">
+										<rect
+											x="28"
+											y="28"
+											width="104"
+											height="104"
+											fill="url(#grad)"></rect>
+									</mask>
+								</defs>
+
+								<g>
+									<g class="pl__ring-rotate">
+										<circle
+											class="pl__ring-stroke"
+											cx="80"
+											cy="80"
+											r="72"
+											fill="none"
+											stroke="hsl(223,90%,55%)"
+											stroke-width="16"
+											stroke-dasharray="452.39 452.39"
+											stroke-dashoffset="452"
+											stroke-linecap="round"
+											transform="rotate(-45,80,80)"></circle>
+									</g>
+								</g>
+								<g mask="url(#mask1)">
+									<g class="pl__ring-rotate">
+										<circle
+											class="pl__ring-stroke"
+											cx="80"
+											cy="80"
+											r="72"
+											fill="none"
+											stroke="hsl(193,90%,55%)"
+											stroke-width="16"
+											stroke-dasharray="452.39 452.39"
+											stroke-dashoffset="452"
+											stroke-linecap="round"
+											transform="rotate(-45,80,80)"></circle>
+									</g>
+								</g>
+
+								<g>
+									<g
+										stroke-width="4"
+										stroke-dasharray="12 12"
+										stroke-dashoffset="12"
+										stroke-linecap="round"
+										transform="translate(80,80)">
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,10%,90%)"
+											points="0,2 0,14"
+											transform="rotate(-135,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,10%,90%)"
+											points="0,2 0,14"
+											transform="rotate(-90,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,10%,90%)"
+											points="0,2 0,14"
+											transform="rotate(-45,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,10%,90%)"
+											points="0,2 0,14"
+											transform="rotate(0,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,10%,90%)"
+											points="0,2 0,14"
+											transform="rotate(45,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,10%,90%)"
+											points="0,2 0,14"
+											transform="rotate(90,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,10%,90%)"
+											points="0,2 0,14"
+											transform="rotate(135,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,10%,90%)"
+											points="0,2 0,14"
+											transform="rotate(180,0,0) translate(0,40)"></polyline>
+									</g>
+								</g>
+								<g mask="url(#mask1)">
+									<g
+										stroke-width="4"
+										stroke-dasharray="12 12"
+										stroke-dashoffset="12"
+										stroke-linecap="round"
+										transform="translate(80,80)">
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,90%,80%)"
+											points="0,2 0,14"
+											transform="rotate(-135,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,90%,80%)"
+											points="0,2 0,14"
+											transform="rotate(-90,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,90%,80%)"
+											points="0,2 0,14"
+											transform="rotate(-45,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,90%,80%)"
+											points="0,2 0,14"
+											transform="rotate(0,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,90%,80%)"
+											points="0,2 0,14"
+											transform="rotate(45,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,90%,80%)"
+											points="0,2 0,14"
+											transform="rotate(90,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,90%,80%)"
+											points="0,2 0,14"
+											transform="rotate(135,0,0) translate(0,40)"></polyline>
+										<polyline
+											class="pl__tick"
+											stroke="hsl(223,90%,80%)"
+											points="0,2 0,14"
+											transform="rotate(180,0,0) translate(0,40)"></polyline>
+									</g>
+								</g>
+
+								<g>
+									<g transform="translate(64,28)">
+										<g class="pl__arrows" transform="rotate(45,16,52)">
+											<path
+												fill="hsl(3,90%,55%)"
+												d="M17.998,1.506l13.892,43.594c.455,1.426-.56,2.899-1.998,2.899H2.108c-1.437,0-2.452-1.473-1.998-2.899L14.002,1.506c.64-2.008,3.356-2.008,3.996,0Z"></path>
+											<path
+												fill="hsl(223,10%,90%)"
+												d="M14.009,102.499L.109,58.889c-.453-1.421,.559-2.889,1.991-2.889H29.899c1.433,0,2.444,1.468,1.991,2.889l-13.899,43.61c-.638,2.001-3.345,2.001-3.983,0Z"></path>
+										</g>
+									</g>
+								</g>
+								<g mask="url(#mask2)">
+									<g transform="translate(64,28)">
+										<g class="pl__arrows" transform="rotate(45,16,52)">
+											<path
+												fill="hsl(333,90%,55%)"
+												d="M17.998,1.506l13.892,43.594c.455,1.426-.56,2.899-1.998,2.899H2.108c-1.437,0-2.452-1.473-1.998-2.899L14.002,1.506c.64-2.008,3.356-2.008,3.996,0Z"></path>
+											<path
+												fill="hsl(223,90%,80%)"
+												d="M14.009,102.499L.109,58.889c-.453-1.421,.559-2.889,1.991-2.889H29.899c1.433,0,2.444,1.468,1.991,2.889l-13.899,43.61c-.638,2.001-3.345,2.001-3.983,0Z"></path>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div class="bento-content">
+							<h4 class="bento-title">GIS Location Intelligence</h4>
+							<p class="bento-text">
+								We analyze what surrounds each property — from commute time and
+								nearby services to safety and environmental quality.
+							</p>
+						</div>
+					</div>
+
+					<!-- Smart Ranking -->
+					<div class="bento-item" id="feat-score">
+						<div>
+							<script
+								src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js"
+								type="module"></script>
+							<dotlottie-wc
+								src="https://lottie.host/08464fb1-de73-4454-90b7-2d4d4beaebc2/Fi6lZp3YiW.lottie"
+								style="width: 200px; height: 200px"
+								autoplay
+								loop></dotlottie-wc>
+						</div>
+						<div class="bento-content">
+							<h4 class="bento-title">Smart Property Scoring</h4>
+							<p class="bento-text">
+								Every listing gets a smart score based on how closely it matches
+								your lifestyle, needs, and budget.
+							</p>
+						</div>
+					</div>
+
+					<!-- Secure Communication -->
+					<div class="bento-item wide wider" id="feat-chat">
+						<div class="communication">
+							<script
+								src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js"
+								type="module"></script>
+							<dotlottie-wc
+								src="https://lottie.host/02b3808b-9043-4837-a081-ede8a7c0589d/b0OGDUKoZQ.lottie"
+								style="width: 300px; height: 300px"
+								autoplay
+								loop></dotlottie-wc>
+						</div>
+						<div class="bento-content">
+							<div class="bento-icon">🛡️</div>
+							<h4 class="bento-title">Secure Communication</h4>
+							<p class="bento-text">
+								Chat directly with sellers through a secure, private channel —
+								no middlemen, no noise.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="tech-section" id="about">
+			<div class="tech-container">
+				<div class="tech-header">
+					<span class="tech-tag">Deep Tech</span>
+					<h2 class="tech-title">Core Intelligence</h2>
+					<p class="tech-subtitle">
+						Where artificial intelligence meets real-world location data.
+					</p>
+				</div>
+
+				<div class="tech-pillars">
+					<div class="tech-pillar" id="ai-pillar">
+						<!-- From Uiverse.io by andrew-demchenk0 -->
+						<div class="pillar-visual">
+							<div class="pyramid-loader">
+								<div class="wrapper">
+									<span class="side side1"></span>
+									<span class="side side2"></span>
+									<span class="side side3"></span>
+									<span class="side side4"></span>
+									<span class="shadow"></span>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="pillar-title">Neural Search Protocol</h3>
+						<p class="pillar-description">
+							Our proprietary AI architecture transforms natural language into
+							complex property requirements. It doesn't just match keywords; it
+							understands your lifestyle, intent, and subtle preferences.
+						</p>
+						<ul class="pillar-list">
+							<li>Semantic Intent Analysis</li>
+							<li>Behavioral Preference Learning</li>
+							<li>Conversational Negotiation AI</li>
+						</ul>
+					</div>
+
+					<div class="tech-pillar" id="gis-pillar">
+						<div class="pillar-visual">
+							<div class="grid-overlay"></div>
+							<!-- From Uiverse.io by andrew-demchenk0 -->
+							<div class="cube-loader">
+								<div class="cube-top"></div>
+								<div class="cube-wrapper">
+									<span style="--i: 0" class="cube-span"></span>
+									<span style="--i: 1" class="cube-span"></span>
+									<span style="--i: 2" class="cube-span"></span>
+									<span style="--i: 3" class="cube-span"></span>
+								</div>
+							</div>
+						</div>
+						<h3 class="pillar-title">GIS Spatial Intelligence</h3>
+						<p class="pillar-description">
+							By integrating multi-layered spatial data, we provide a 360° view
+							of every location. From micro-climate metrics to real-time traffic
+							flow patterns, we decode the environment around your future home.
+						</p>
+						<ul class="pillar-list">
+							<li>Multi-layer Spatial Correlation</li>
+							<li>Dynamic Commute Modeling</li>
+							<li>Environmental Health Scoring</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="business-cta">
+			<div class="cta-grid">
+				<!-- Seller / Business Card -->
+				<div class="cta-card seller-card">
+					<div class="cta-content-wrapper">
+						<span class="cta-tag">For Sellers & Agents</span>
+						<h2 class="cta-headline">Don't be left behind.</h2>
+						<p class="cta-subtext">
+							Sell, manage, and list your properties all in one platform.
+							Leverage our built-in CRM to manage buyers and close deals faster.
+						</p>
+						<a href="#" class="cta-button btn-seller">Start Selling</a>
+					</div>
+				</div>
+
+				<!-- Buyer / Customer Card -->
+				<div class="cta-card buyer-card">
+					<div class="cta-content-wrapper">
+						<span class="cta-tag">For Home Seekers</span>
+						<h2 class="cta-headline">Find your fit.</h2>
+						<p class="cta-subtext">
+							Experience the future of home buying. Let our AI find the perfect
+							match for your lifestyle and budget.
+						</p>
+						<a href="#" class="cta-button btn-buyer">Find a Home</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="site-footer">
+			<div class="footer-content">
+				<p class="copyright">&copy; 2025 Rizzide Inc.</p>
+				<div class="footer-links">
+					<a href="#">Privacy</a>
+					<a href="#">Terms</a>
+					<a href="#">Contact</a>
+				</div>
+			</div>
+		</footer>
+
+		<svg id="connectionLines" width="100%" height="100%">
+			<defs>
+				<mask id="mask1">
+					<path
+						id="maskPath1"
+						stroke="white"
+						stroke-width="4"
+						fill="none"
+						d="" />
+				</mask>
+				<mask id="mask2">
+					<path
+						id="maskPath2"
+						stroke="white"
+						stroke-width="4"
+						fill="none"
+						d="" />
+				</mask>
+			</defs>
+			<path id="line1" class="dotted-line" mask="url(#mask1)" d="" />
+			<path id="line2" class="dotted-line" mask="url(#mask2)" d="" />
+		</svg>
+
+		<svg
+			id="virtualCursor"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M5.5 3.21V20.8L10.11 16.19L13.15 22.5L16.35 20.96L13.31 14.65L19.5 14.65L5.5 3.21Z"
+				fill="black"
+				stroke="white"
+				stroke-width="1.5"
+				stroke-linejoin="round" />
+		</svg>
+
+		<script src="script.js"></script>
+	</body>
+</html>
