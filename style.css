@@ -893,6 +893,10 @@ button:hover {
 		filter: hue-rotate(0deg);
 	}
 }
+.logo-img {
+	width: 30px;
+	height: 30px;
+}
 /* #endregion */
 @media (max-width: 992px) {
 	.bento-grid {
